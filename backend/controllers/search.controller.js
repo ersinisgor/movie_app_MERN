@@ -24,10 +24,10 @@ export async function searchPerson(req, res) {
       },
     });
 
-    res.status(200).json({ success: true, content: response.results });
+    return res.status(200).json({ success: true, content: response.results });
   } catch (error) {
     console.log("Error in searchPerson contoller: ", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal server error",
       errorText: error.message,

@@ -7,7 +7,7 @@ export const protectRoute = async (req, res, next) => {
     const token = req.cookies["jwt-netflix"];
 
     if (!token) {
-      res
+      return res
         .status(401)
         .json({ success: false, message: "Unauthorized - No Token Provided" });
     }
@@ -15,7 +15,7 @@ export const protectRoute = async (req, res, next) => {
     const decoded = jwt.verify(token, ENV_VARS.JWT_SECRET);
 
     if (!decoded) {
-      res.status(401).json({
+      return res.status(401).json({
         success: false,
         message: "Unauthorized - Invalid Token",
       });
@@ -24,7 +24,7 @@ export const protectRoute = async (req, res, next) => {
     const user = await User.findById(decoded.userId).select("-password");
 
     if (!user) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "User not found",
       });
@@ -35,7 +35,7 @@ export const protectRoute = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal Server Error",
       errorText: error.message,

@@ -57,13 +57,13 @@ export async function signup(req, res) {
     generateTokenAndSetCookie(newUser._id, res);
     await newUser.save();
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       user: { ...newUser._doc, password: "" },
     });
   } catch (error) {
     console.log("Error in signup controller", error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal Server Error",
       errorText: error.message,
@@ -99,13 +99,13 @@ export async function login(req, res) {
 
     generateTokenAndSetCookie(user._id, res);
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       user: { ...user._doc, password: "" },
     });
   } catch (error) {
     console.log("Error in login controller", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal Server Error",
       errorText: error.message,
@@ -116,10 +116,12 @@ export async function login(req, res) {
 export async function logout(req, res) {
   try {
     res.clearCookie("jwt-netflix");
-    res.status(200).json({ success: true, message: "Logged out successfully" });
+    return res
+      .status(200)
+      .json({ success: true, message: "Logged out successfully" });
   } catch (error) {
     console.log("Error in logout controller", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Internal Server Error",
       errorText: error.message,
