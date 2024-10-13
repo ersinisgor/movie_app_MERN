@@ -34,6 +34,7 @@ export async function searchPerson(req, res) {
     });
   }
 }
+
 export async function searchMovie(req, res) {
   const { query } = req.params;
   try {
@@ -67,6 +68,7 @@ export async function searchMovie(req, res) {
     });
   }
 }
+
 export async function searchTvShow(req, res) {
   const { query } = req.params;
   try {
@@ -93,6 +95,41 @@ export async function searchTvShow(req, res) {
     return res.status(200).json({ success: true, content: response.results });
   } catch (error) {
     console.log("Error in searchMovie contoller: ", error.message);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      errorText: error.message,
+    });
+  }
+}
+
+export async function getSearchHistory(req, res) {
+  try {
+    res.status(200).json({ success: true, content: req.user.searchHistory });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      errorText: error.message,
+    });
+  }
+}
+
+export async function removeItemFromSearchHistory(req, res) {
+  let { id } = req.params;
+
+  id = parseInt(id);
+
+  try {
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: {
+        searchHistory: { id: id },
+      },
+    });
+    return res
+      .status(200)
+      .json({ success: true, message: "Item removed from search history" });
+  } catch (error) {
     return res.status(500).json({
       success: false,
       message: "Internal server error",
