@@ -4,8 +4,17 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import Footer from "./components/Footer";
 import { Toaster } from "react-hot-toast";
+import { useAuthStore } from "./store/authUser";
+import { useEffect } from "react";
 
 function App() {
+  const { user, isCheckingAuth, authCheck } = useAuthStore();
+  console.log("user: ", user, "isCheckingAuth: ", isCheckingAuth);
+
+  useEffect(() => {
+    authCheck();
+  }, []);
+
   return (
     <>
       <Routes>
