@@ -2,13 +2,15 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from "../../hooks/useGetTrendingContent";
-import useGetMovieGenres from "../../hooks/useGetMovieGenres";
+
 import { ORIGINAL_IMG_BASE_URL } from "../../utils/constants";
+import useGetGenres from "../../hooks/useGetGenres";
 
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
 
-  const { movieGenres } = useGetMovieGenres();
+  const { genres } = useGetGenres();
+  console.log(genres);
 
   if (!trendingContent)
     return (
@@ -52,7 +54,7 @@ const HomeScreen = () => {
               | {trendingContent?.adult ? "18+" : "PG-13"} |{" "}
               <span className=" text-sm ">
                 {/* Match and display genres */}
-                {movieGenres
+                {genres
                   .filter(genre =>
                     trendingContent?.genre_ids.includes(genre.id)
                   )

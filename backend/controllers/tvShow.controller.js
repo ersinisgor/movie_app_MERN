@@ -19,6 +19,22 @@ export async function getTrendingTvShow(req, res) {
   }
 }
 
+export async function getTvShowGenres(req, res) {
+  try {
+    const data = await fetchFromTMDB(
+      "https://api.themoviedb.org/3/genre/tv/list?language=en-US"
+    );
+
+    return res.status(200).json({ success: true, genres: data.genres });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      errorText: error.message,
+    });
+  }
+}
+
 export async function getTvShowTrailers(req, res) {
   const { id } = req.params;
   try {
