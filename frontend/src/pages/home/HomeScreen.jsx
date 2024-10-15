@@ -2,20 +2,13 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from "../../hooks/useGetTrendingContent";
+import useGetMovieGenres from "../../hooks/useGetMovieGenres";
 import { ORIGINAL_IMG_BASE_URL } from "../../utils/constants";
-import { useContentStore } from "../../store/content";
-import { useEffect } from "react";
 
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
-  const { getMovieGenres, movieGenres } = useContentStore();
 
-  useEffect(() => {
-    const fetchGenres = async () => {
-      await getMovieGenres();
-    };
-    fetchGenres();
-  }, [getMovieGenres]);
+  const { movieGenres } = useGetMovieGenres();
 
   if (!trendingContent)
     return (
