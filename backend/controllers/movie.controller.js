@@ -19,6 +19,22 @@ export async function getTrendingMovie(req, res) {
   }
 }
 
+export async function getMovieGenres(req, res) {
+  try {
+    const data = await fetchFromTMDB(
+      "https://api.themoviedb.org/3/genre/movie/list?language=en"
+    );
+
+    return res.status(200).json({ success: true, genres: data.genres });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      errorText: error.message,
+    });
+  }
+}
+
 export async function getMovieTrailers(req, res) {
   const { id } = req.params;
   try {

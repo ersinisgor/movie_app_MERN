@@ -3,10 +3,19 @@ import Navbar from "../../components/Navbar";
 import { Info, Play } from "lucide-react";
 import useGetTrendingContent from "../../hooks/useGetTrendingContent";
 import { ORIGINAL_IMG_BASE_URL } from "../../utils/constants";
+import { useContentStore } from "../../store/content";
+import { useEffect } from "react";
 
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
-  console.log(trendingContent);
+  const { getMovieGenres, movieGenres } = useContentStore();
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      await getMovieGenres();
+    };
+    fetchGenres();
+  }, [getMovieGenres]);
 
   if (!trendingContent)
     return (
@@ -47,7 +56,16 @@ const HomeScreen = () => {
             <p className="mt-2 text-lg">
               {trendingContent?.release_date?.split("-")[0] ||
                 trendingContent?.first_air_date.split("-")[0]}{" "}
-              | {trendingContent?.adult ? "18+" : "PG-13"}
+              | {trendingContent?.adult ? "18+" : "PG-13"} |{" "}
+              <span className=" text-sm ">
+                {/* Match and display genres */}
+                {movieGenres
+                  .filter(genre =>
+                    trendingContent?.genre_ids.includes(genre.id)
+                  )
+                  .map(genre => genre.name)
+                  .join(", ")}{" "}
+              </span>
             </p>
             <p className="mt-4 text-lg">
               {trendingContent?.overview.length > 200
