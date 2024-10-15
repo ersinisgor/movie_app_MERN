@@ -7,6 +7,15 @@ import { ORIGINAL_IMG_BASE_URL } from "../../utils/constants";
 const HomeScreen = () => {
   const { trendingContent } = useGetTrendingContent();
   console.log(trendingContent);
+
+  if (!trendingContent)
+    return (
+      <div className="h-screen text-white relative">
+        <Navbar />
+        <div className="absolute top-0 left-0 w-full h-full bg-black/70 flex items-center justify-center -z-10 shimmer" />
+      </div>
+    );
+
   return (
     <>
       <div className="relative h-screen text-white">
@@ -49,7 +58,7 @@ const HomeScreen = () => {
 
           <div className="flex mt-8">
             <Link
-              to="/watch/123"
+              to={`/watch/${trendingContent?.id}`}
               className="bg-white hover:bg-white/80 text-black font-bold py-2 px-4 rounded mr-4 flex
 							 items-center"
             >
@@ -58,7 +67,7 @@ const HomeScreen = () => {
             </Link>
 
             <Link
-              to="/watch/123"
+              to={`/watch/${trendingContent?.id}`}
               className="bg-gray-500/70 hover:bg-gray-500 text-white py-2 px-4 rounded flex items-center"
             >
               <Info className="size-6 mr-2" />
