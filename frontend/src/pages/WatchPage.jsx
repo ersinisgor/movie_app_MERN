@@ -191,7 +191,11 @@ const WatchPage = () => {
               )}{" "}
               |{" "}
               <span className="text-sm">
-                {content?.genres?.map(genre => genre.name).join(", ") || ""}{" "}
+                {content?.genres
+                  ?.map(genre =>
+                    genre.name === "Science Fiction" ? "Sci-Fi" : genre.name
+                  )
+                  .join(", ") || ""}{" "}
               </span>
             </p>
             <p className="mt-4 text-lg">{content?.overview}</p>
