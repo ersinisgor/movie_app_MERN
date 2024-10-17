@@ -41,6 +41,7 @@ const SearchHistoryPage = () => {
       try {
         const res = await axios.get(`/api/v1/search/history`);
         setSearchHistory(res.data.content);
+        console.log(searchHistory);
       } catch (error) {
         console.log("error", error);
         setSearchHistory([]);
@@ -86,7 +87,11 @@ const SearchHistoryPage = () => {
               className="bg-gray-800 p-4 rounded flex items-start"
             >
               <img
-                src={SMALL_IMG_BASE_URL + entry.image}
+                src={
+                  entry.image === null && entry.searchType === "person"
+                    ? "avatar4.png"
+                    : SMALL_IMG_BASE_URL + entry.image
+                }
                 alt="History image"
                 className="size-16 rounded-full object-cover mr-4"
               />
@@ -109,7 +114,7 @@ const SearchHistoryPage = () => {
                 {entry.searchType[0].toUpperCase() + entry.searchType.slice(1)}
               </span>
               <Trash
-                className="size-5 ml-4 cursor-pointer hover:fill-red-600 hover:text-red-600"
+                className="size-5 ml-4 cursor-pointer hover:fill-red-600 hover:text-red-600 flex-none"
                 onClick={() => handleDelete(entry)}
               />
             </div>
