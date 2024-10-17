@@ -16,7 +16,7 @@ const SearchPage = () => {
 
   const handleTabClick = tab => {
     setActiveTab(tab);
-    tab === "movie" ? setContentType("movie") : setContentType("tv");
+    tab === "movie" ? setContentType("movie") : setContentType("tv-show");
     setResults([]);
   };
 
@@ -51,9 +51,9 @@ const SearchPage = () => {
           </button>
           <button
             className={`py-2 px-4 rounded ${
-              activeTab === "tv" ? "bg-red-600" : "bg-gray-800"
+              activeTab === "tv-show" ? "bg-red-600" : "bg-gray-800"
             } hover:bg-red-700`}
-            onClick={() => handleTabClick("tv")}
+            onClick={() => handleTabClick("tv-show")}
           >
             TV Shows
           </button>
