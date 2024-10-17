@@ -4,10 +4,7 @@
 
 .hero-bg {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)),
-    url("hero.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    url("/hero.jpg");
 }
 
 .shimmer {
