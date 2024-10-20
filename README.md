@@ -30,7 +30,7 @@ The application also features a responsive UI, optimized for desktop, tablet, an
 - 🎥 Watch movie trailers directly on the platform
 - 📜 Search history tracking (and management)
 - 🐱‍👤 Recommendations of similar movies/TV shows
-- 💙 Awesome landing page design with smooth animations and video integration
+- 💙 Landing page design with smooth shimmer effect animations and video integration
 - 💾 Fullstack MERN implementation with secure backend routes
 
 ## Tech Stack
@@ -40,11 +40,11 @@ The application also features a responsive UI, optimized for desktop, tablet, an
 - **React.js**: Used for building the dynamic, responsive user interface.
 - **React Router:** For navigation and routing between different pages in the application.
 - **Axios:** For making HTTP requests to the backend API.
-  Lucide React: Icon library used to display beautiful icons (e.g., Play, Info).
+- **Lucide React:** Icon library used to display icons.
 - **Zustand:** A small, fast state management library used to manage global state in the app.
 - **React Player:** Used for embedding and playing videos like movie trailers.
 - **Tailwind CSS:** A utility-first CSS framework used for responsive design and styling.
-- **React Hot Toast:** For showing notifications, such as errors and success messages (e.g., account creation success).
+- **React Hot Toast:** For showing notifications, such as errors and success messages.
 
 ### Backend:
 
