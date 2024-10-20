@@ -1,5 +1,7 @@
 # Netflix Clone MERN Stack 🎬
 
+![Demo GIF](https://github.com/ersinisgor/netflix_clone_MERN/blob/main/frontend/public/project_presentation.gif)
+
 ## Table of Contents
 
 - [Overview](#overview)
