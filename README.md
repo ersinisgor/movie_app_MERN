@@ -1,6 +1,6 @@
 # Movie Streaming Platform MERN Stack 🎬
 
-![Demo GIF](https://github.com/ersinisgor/netflix_clone_MERN/blob/main/frontend/public/project_presentation.gif)
+![Demo GIF](https://github.com/ersinisgor/movie_app_MERN/blob/main/frontend/public/project_presentation.gif)
 
 ## Table of Contents
 
