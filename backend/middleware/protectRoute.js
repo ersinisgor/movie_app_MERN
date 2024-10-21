@@ -4,7 +4,7 @@ import { ENV_VARS } from "../config/envVars.js";
 
 export const protectRoute = async (req, res, next) => {
   try {
-    const token = req.cookies["jwt-netflix"];
+    const token = req.cookies["jwt-movie"];
 
     if (!token) {
       return res

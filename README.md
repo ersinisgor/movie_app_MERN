@@ -1,4 +1,4 @@
-# Netflix Clone MERN Stack 🎬
+# Movie Streaming Platform MERN Stack 🎬
 
 ![Demo GIF](https://github.com/ersinisgor/netflix_clone_MERN/blob/main/frontend/public/project_presentation.gif)
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-This project is a **Netflix Clone** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js).** It mimics the core functionalities of Netflix, allowing users to sign up, log in, view trending movies and TV shows, watch trailers, search for actors and movies, and keep a search history. All functionalities are authenticated using **JWT (JSON Web Token).**
+This project is a **Movie Streaming Platform** built using the **MERN Stack (MongoDB, Express.js, React.js, Node.js).** It mimics the core functionalities of popular video streaming platforms, allowing users to sign up, log in, view trending movies and TV shows, watch trailers, search for actors and movies, and keep a search history. All functionalities are authenticated using **JWT (JSON Web Token).**
 
 The application also features a responsive UI, optimized for desktop, tablet, and mobile devices. Users can navigate through the application, watch videos, and view detailed information about movies or TV shows, and manage their search history.
 
