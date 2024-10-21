@@ -17,10 +17,26 @@ const MovieSlider = ({ category }) => {
     category.replaceAll("_", " ").slice(1);
   const formattedContentType = contentType === "movie" ? "Movies" : "TV Shows";
 
+  // Function to shuffle content array
+  const shuffleArray = array => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
   useEffect(() => {
     const getContent = async () => {
       const res = await axios.get(`/api/v1/${contentType}/${category}`);
-      setContent(res.data.content);
+      let fetchedContent = res.data.content;
+
+      // Check if it's not "Top Rated Movies/TV Shows" before shuffling
+      if (category !== "top_rated") {
+        fetchedContent = shuffleArray(fetchedContent); // Shuffle the content
+      }
+
+      setContent(fetchedContent);
     };
 
     getContent();
