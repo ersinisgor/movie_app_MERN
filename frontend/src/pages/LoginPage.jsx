@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/authUser";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("abc@mail.com");
+  const [password, setPassword] = useState("123123");
   const { login } = useAuthStore();
 
   const handleLogin = e => {

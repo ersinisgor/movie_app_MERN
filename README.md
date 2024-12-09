@@ -21,6 +21,11 @@ This project is a **Movie Streaming Platform** built using the **MERN Stack (Mon
 
 The application also features a responsive UI, optimized for desktop, tablet, and mobile devices. Users can navigate through the application, watch videos, and view detailed information about movies or TV shows, and manage their search history.
 
+<u>Login</u>
+<br>
+**email:** abc@mail.com<br>
+**password:** 123123
+
 ### Key Features
 
 - 🔐 User authentication with JWT (JSON Web Token)
