@@ -1,15 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../store/authUser";
+import { Eye, EyeOff } from "lucide-react"; // Import an icon library
 
 const LoginPage = () => {
   const [email, setEmail] = useState("abc@mail.com");
   const [password, setPassword] = useState("123123");
+  const [showPassword, setShowPassword] = useState(false); // New state
   const { login } = useAuthStore();
 
   const handleLogin = e => {
     e.preventDefault();
     login({ email, password });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -44,21 +50,30 @@ const LoginPage = () => {
               />
             </div>
 
-            <div>
+            <div className="relative">
               <label
                 htmlFor="password"
                 className="text-sm font-medium text-gray-300 block"
               >
                 Password
               </label>
-              <input
-                type="password"
-                className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring"
-                placeholder="●●●●●●●●"
-                id="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
+              <div className="flex items-center border border-gray-700 rounded-md bg-transparent mt-1 focus-within:ring">
+                <input
+                  type={showPassword ? "text" : "password"} // Toggle type
+                  className="flex-1 px-3 py-2 bg-transparent text-white focus:outline-none"
+                  placeholder="●●●●●●●●"
+                  id="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="px-3 text-gray-400 hover:text-gray-200"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
             </div>
 
             <button className="w-full py-2 bg-red-600 text-white font-semibold rounded-md hover:bg-red-700">
